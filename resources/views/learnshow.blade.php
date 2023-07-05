@@ -63,7 +63,7 @@
                         headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}' },
                         body: query
                         }).then(response => response.json())
-                        alert('11111');
+                        
                 }
                
             },
