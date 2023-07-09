@@ -21,34 +21,35 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('question',function(){return view('question');});
+//Route::get('question',function(){return view('question');});
+Route::middleware('auth')->group(function(){
+    Route::get('/questionindex',[QuestionController::class,'index'])->name('index');
+    Route::get('/questionregister',[QuestionController::class, 'create']);
+    Route::post('/questionregister',[QuestionController::class, 'store'])->name('questionregister');
+    Route::get('/questionshow/{id}',[QuestionController::class, 'show'])->name('show');
+    Route::get('/questionedit/{id}/edit',[QuestionController::class, 'edit'])->name('edit');
+    Route::patch('/questionedit/{question_id}',[QuestionController::class, 'update'])->name('patch');
+    Route::delete('questiondelete/{question_id}',[QuestionController::class, 'destroy'])->name('destroy');
+});
 
-Route::get('/questionindex',[QuestionController::class,'index'])->name('index');
-Route::get('/questionregister',[QuestionController::class, 'create']);
-Route::post('/questionregister',[QuestionController::class, 'store'])->name('questionregister');
-Route::get('/questionshow/{id}',[QuestionController::class, 'show'])->name('show');
-Route::get('/questionedit/{id}/edit',[QuestionController::class, 'edit'])->name('edit');
-Route::patch('/questionedit/{question_id}',[QuestionController::class, 'update'])->name('patch');
-Route::delete('questiondelete/{question_id}',[QuestionController::class, 'destroy'])->name('destroy');
+Route::middleware('auth')->group(function(){
+    Route::get('learn',[LearnController::class,'index'])->name('learn.index');
+    Route::get('learnshow',[LearnController::class,'show'])->name('learn.show');
+    Route::post('learnajax',[LearnController::class,'learnajax'])->name('learnajax');
+    Route::get('/dashboard', [LearnController::class,'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+});
 
-Route::post('memorize',[QuestionController::class, 'test'])->name('memorize');
+Route::middleware('auth')->group(function(){
+    Route::get('/tag',[TagController::class,'index'])->name('tag.index');
+    Route::post('/tag',[TagController::class,'store'])->name('tag.store');
+    Route::delete('/tag',[TagController::class,'destroy'])->name('tag.destroy');
+    Route::post('tagajax',[TagController::class,'tagajax'])->name('tagajax');
+    Route::get('tagindexajax',[TagController::class,'tagindexajax'])->name('tagindexajax');
+    Route::post('/questionedit/{id}/tagajax',[TagController::class,'tagajax']);
+    Route::get('/questionedit/{id}/tagindexajax',[TagController::class,'tagindexajax']);
+    Route::get('/questionedit/{id}/tageditajax',[TagController::class,'tageditajax']);
+});
 
-Route::get('learn',[LearnController::class,'index'])->name('learn.index');
-Route::get('learnshow',[LearnController::class,'show'])->name('learn.show');
-Route::post('learnajax',[LearnController::class,'learnajax'])->name('learnajax');
-Route::post('tagajax',[LearnController::class,'tagajax'])->name('tagajax');
-Route::get('tagindexajax',[LearnController::class,'tagindexajax'])->name('tagindexajax');
-Route::post('/questionedit/{id}/tagajax',[LearnController::class,'tagajax']);
-Route::get('/questionedit/{id}/tagindexajax',[LearnController::class,'tagindexajax']);
-Route::get('/questionedit/{id}/tageditajax',[LearnController::class,'tageditajax']);
-
-
-Route::get('/tag',[TagController::class,'index'])->name('tag.index');
-Route::post('/tag',[TagController::class,'store'])->name('tag.store');
-Route::delete('/tag',[TagController::class,'destroy'])->name('tag.destroy');
-
-
-Route::get('/dashboard', [LearnController::class,'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
