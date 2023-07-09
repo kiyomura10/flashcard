@@ -7,6 +7,7 @@ use App\Models\Question;
 use App\Models\Tag;
 use App\Models\QuestionTag;
 use App\Http\Requests\QuestionRequest;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
 
 class QuestionController extends Controller
@@ -17,7 +18,7 @@ class QuestionController extends Controller
 
             if($request->search == 'undefined' ){
                 //タグが未定義の問題表示
-                $question = Question::doesntHave('tags')->get();
+                $question = Question::doesntHave('tags')->where('user_id',auth()->id())->get();
                 //dd('未定義',$question);
             }else{
                 //タグで絞り込む場合
@@ -64,21 +65,16 @@ class QuestionController extends Controller
                     ]);
             }
             
-
         });
 
        return back()->with('message','保存しました');
     }
 
 
-    public function show($id){
-       $value = Question::find($id);
-       return view('/questionshow',compact('value'));
-    }
-
-
     public function edit($id){
         $value = Question::find($id);
+        //ログインユーザーと問題のユーザーIDが同じかチェック
+        Gate::authorize('access', $value->user_id);
         $tags = Tag::where('user_id',auth()->id())->orderBy('id','DESC')->get();
        //dd($value->tags);
         $include_tags = [];

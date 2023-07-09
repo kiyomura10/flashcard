@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function(){
 Route::middleware('auth')->group(function(){
     Route::get('learn',[LearnController::class,'index'])->name('learn.index');
     Route::get('learnshow',[LearnController::class,'show'])->name('learn.show');
-    Route::post('learnajax',[LearnController::class,'learnajax'])->name('learnajax');
+    Route::post('learnajax',[LearnController::class,'learnAjax'])->name('learnajax');
     Route::get('/dashboard', [LearnController::class,'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 });
 
@@ -43,11 +43,11 @@ Route::middleware('auth')->group(function(){
     Route::get('/tag',[TagController::class,'index'])->name('tag.index');
     Route::post('/tag',[TagController::class,'store'])->name('tag.store');
     Route::delete('/tag',[TagController::class,'destroy'])->name('tag.destroy');
-    Route::post('tagajax',[TagController::class,'tagajax'])->name('tagajax');
-    Route::get('tagindexajax',[TagController::class,'tagindexajax'])->name('tagindexajax');
-    Route::post('/questionedit/{id}/tagajax',[TagController::class,'tagajax']);
-    Route::get('/questionedit/{id}/tagindexajax',[TagController::class,'tagindexajax']);
-    Route::get('/questionedit/{id}/tageditajax',[TagController::class,'tageditajax']);
+    Route::post('tagajax',[TagController::class,'tagAjax'])->name('tagajax');
+    Route::get('tagindexajax',[TagController::class,'tagIndexAjax'])->name('tagindexajax');
+    Route::post('/questionedit/{id}/tagajax',[TagController::class,'tagAjax']);
+    Route::get('/questionedit/{id}/tagindexajax',[TagController::class,'tagIndexAjax']);
+    Route::get('/questionedit/{id}/tageditajax',[TagController::class,'tagEditAjax']);
 });
 
 

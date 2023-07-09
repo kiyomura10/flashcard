@@ -53,7 +53,7 @@ class LearnController extends Controller
     }
 
 //クイズを解いた時の処理
-    public function learnajax(Request $request){
+    public function learnAjax(Request $request){
         
         $id = $request->input('id');
         $correct = $request->input('correct');
@@ -67,7 +67,7 @@ class LearnController extends Controller
             $question->memorize = $memorize;
             $question->save();
 
-        echo json_encode($id);
+        return $id;
     }
 
     public function dashboard(){
