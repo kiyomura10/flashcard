@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class question extends Model
+class Question extends Model
 {
     use HasFactory;
 
@@ -14,7 +14,7 @@ class question extends Model
     protected $guarded = ['id'];
 
     public function tags(){
-        return $this->belongsToMany(tag::class,'question_tags');
+        return $this->belongsToMany(Tag::class);
     }
    
 }

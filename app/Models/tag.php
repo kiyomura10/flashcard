@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class tag extends Model
+class Tag extends Model
 {
     use HasFactory;
 
@@ -14,6 +14,6 @@ class tag extends Model
     public $timestamps = false;
 
     public function questions(){
-        return $this->belongsToMany(question::class,'question_tags');
+        return $this->belongsToMany(Question::class);
     }
 }
