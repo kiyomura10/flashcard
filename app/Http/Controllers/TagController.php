@@ -41,7 +41,7 @@ class TagController extends Controller
     }
 
     //タグの新規追加
-    public function tagajax(Request $request){
+    public function tagAjax(Request $request){
         $request->validate([
             'tag' => ['required','max:10','unique:tags,name']
             
@@ -53,24 +53,24 @@ class TagController extends Controller
             'name'=> $tag
         ]);
         $tags = Tag::where('user_id',auth()->id())->orderBy('id','DESC')->get();
-        echo json_encode($tags);
+        return $tags;
     }
 
 
-    public function tagindexajax(){
+    public function tagIndexAjax(){
         $tags = Tag::where('user_id',auth()->id())->orderBy('id','DESC')->get();
 
-        echo json_encode($tags);
+        return $tags;
     }
 
-    public function tageditajax($id){
+    public function tagEditAjax($id){
         
         $tags = Tag::where('user_id',auth()->id())->orderBy('id','DESC')->get();
         $include_tags = Tag::whereHas('questions',function($query) use($id){
             $query->where('id',$id);
         })->where('user_id',auth()->id())->get();
         $value = ['tags' => $tags,'include_tags' => $include_tags];
-        echo json_encode($value);
+        return $value;
     }
 
     
