@@ -24,7 +24,7 @@ class TagSeeder extends Seeder
         ]; 
 
         foreach($tags as $tag){
-            \App\Models\tag::create($tag);
+            \App\Models\Tag::create($tag);
         }
         
     }
