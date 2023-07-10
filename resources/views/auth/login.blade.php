@@ -12,6 +12,7 @@
                     @endauth
                 </div>
             @endif
+            
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
@@ -54,4 +55,9 @@
             </x-primary-button>
         </div>
     </form>
+    <div>
+        <p>テストユーザー</p>
+        <p>メールアドレス: test@test</p>
+        <p>パスワード: test1234</p>
+    </div>
 </x-guest-layout>
