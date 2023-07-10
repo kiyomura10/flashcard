@@ -71,6 +71,7 @@ class LearnController extends Controller
     }
 
     public function dashboard(){
+        
         //解いた問題数、正解数取得
          $sum = Question::select(DB::raw('SUM(try) as total_try,sum(correct) as total_correct'))->where('user_id',auth()->id())->get();
          $memorize = Question::where('user_id',auth()->id())->where('memorize',1)->count();
