@@ -1,6 +1,6 @@
 # QuizMaker
  
- URL: quizumaker.com
+ URL: <http://quizumaker.com>
  
  QuizMakerは自分でクイズを作成して学習ができるアプリです。
 
