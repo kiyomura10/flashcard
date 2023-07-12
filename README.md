@@ -1,4 +1,5 @@
 # QuizMaker
+ <img src="https://raw.githubusercontent.com/kiyomura10/flashcard/images/login.png">
  
  URL: <https://quizumaker.com>
  
@@ -71,8 +72,48 @@ AWSや本番環境でアプリを動かすために必要な設定の知識が�
 * AWS(VPC,EC2,RDS)
 
 ## AWS(インフラ)構成図
+<img src="https://raw.githubusercontent.com/kiyomura10/flashcard/images/aws.png">
 
 ## 画面
+
+### マイページ
+
+
+<img src="https://raw.githubusercontent.com/kiyomura10/flashcard/images/mypage.png">
+
+
+### クイズ作成
+
+
+<img src="https://raw.githubusercontent.com/kiyomura10/flashcard/images/quizedit.png">
+
+
+### クイズ一覧
+
+
+<img src="https://raw.githubusercontent.com/kiyomura10/flashcard/images/quizindex.png">
+
+
+### タグ管理
+
+
+<img src="https://raw.githubusercontent.com/kiyomura10/flashcard/images/tag.png">
+
+
+### 出題設定
+
+
+<img src="https://raw.githubusercontent.com/kiyomura10/flashcard/images/larnshow.png">
+
+
+### 学習ページ
+
+
+<img src="https://raw.githubusercontent.com/kiyomura10/flashcard/images/larn.png">
+
+
 ## ER図
+
+<img src="https://raw.githubusercontent.com/kiyomura10/flashcard/images/er.png">
 
 
